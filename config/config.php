@@ -26,7 +26,7 @@ define('DB_CHARSET', 'utf8mb4');
 // BASE_URL wajib diisi tanpa trailing slash.
 // Shared hosting (subfolder):  'https://mysite.com/duitgw/public'
 // Docker + Cloudflare Tunnel:  'https://duitgw.namadomainmu.my.id'
-define('BASE_URL', dw_env('BASE_URL', 'https://duitgw.ikhsanlab.my.id/public'));
+define('BASE_URL', dw_env('BASE_URL', 'https://duitgw.ikhsanlab.my.id'));
 
 define('APP_NAME', 'DuitGW');
 define('APP_ENV', dw_env('APP_ENV', 'production')); // 'local' | 'production'
