@@ -1,0 +1,6 @@
+/react/node_modules/
+/public/uploads/bukti/*
+!/public/uploads/bukti/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
+.DS_Store

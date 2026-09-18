@@ -1,0 +1,10 @@
+# Gunakan file ini HANYA jika hosting kamu tidak bisa mengarahkan document root
+# langsung ke folder /public (misalnya beberapa paket shared hosting).
+# Ini akan meneruskan semua request dari root domain ke folder public/.
+#
+# Jika hosting kamu BISA mengatur document root ke /public (disarankan),
+# HAPUS atau abaikan file ini.
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]

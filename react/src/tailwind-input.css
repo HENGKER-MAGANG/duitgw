@@ -1,0 +1,365 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-kertas-off text-tinta font-sans antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-merah-100 text-merah-700;
+  }
+  *:focus-visible {
+    outline: 2px solid #C1121F;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* ---------- Shell / navigation ---------- */
+  .dw-shell {
+    @apply flex min-h-screen;
+  }
+  .dw-sidebar {
+    @apply fixed inset-y-0 left-0 z-40 flex w-64 -translate-x-full flex-col border-r border-merah-100 bg-white px-5 py-6 transition-transform duration-200 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0;
+  }
+  .dw-shell.sidebar-open .dw-sidebar {
+    @apply translate-x-0 shadow-2xl;
+  }
+  .dw-brand {
+    @apply mb-8 flex items-center gap-2.5 no-underline;
+  }
+  .dw-brand-mark {
+    @apply flex h-9 w-9 items-center justify-center rounded-full bg-merah-500 font-mono text-sm font-bold text-white;
+  }
+  .dw-brand-mark-lg {
+    @apply mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-merah-500 font-mono text-xl font-bold text-white;
+  }
+  .dw-brand-text {
+    @apply font-display text-xl font-semibold tracking-tight text-tinta;
+  }
+  .dw-nav {
+    @apply flex flex-1 flex-col gap-1;
+  }
+  .dw-nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-tinta/70 no-underline transition hover:bg-merah-50 hover:text-merah-600;
+  }
+  .dw-nav-link.is-active {
+    @apply bg-merah-500 text-white hover:bg-merah-500 hover:text-white;
+  }
+  .dw-nav-icon {
+    @apply w-4 text-center;
+  }
+  .dw-sidebar-footer {
+    @apply mt-auto flex flex-col gap-3 border-t border-merah-100 pt-4;
+  }
+  .dw-user-chip {
+    @apply flex items-center gap-3;
+  }
+  .dw-user-avatar {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-display text-sm font-semibold text-white;
+  }
+  .dw-user-meta {
+    @apply flex min-w-0 flex-col;
+  }
+  .dw-user-name {
+    @apply truncate text-sm font-semibold text-tinta;
+  }
+  .dw-user-role {
+    @apply text-xs text-tinta/50;
+  }
+  .dw-logout {
+    @apply w-full rounded-lg border border-merah-100 py-2 text-sm font-medium text-merah-600 transition hover:bg-merah-50;
+  }
+  .dw-main {
+    @apply flex min-h-screen w-full flex-col;
+  }
+  .dw-topbar {
+    @apply sticky top-0 z-30 flex items-center gap-3 border-b border-merah-100 bg-kertas-off/90 px-5 py-4 backdrop-blur lg:hidden;
+  }
+  .dw-menu-toggle {
+    @apply rounded-md border border-merah-100 bg-white px-2.5 py-1.5 text-tinta;
+  }
+  .dw-topbar-title {
+    @apply font-display font-semibold;
+  }
+  .dw-content {
+    @apply mx-auto w-full max-w-5xl flex-1 px-5 py-8 lg:px-10;
+  }
+
+  /* ---------- Auth (receipt paper) ---------- */
+  .dw-auth-body {
+    @apply flex min-h-screen items-center justify-center bg-merah-500 bg-[radial-gradient(circle_at_top,_#D6394A,_#780000)] px-4 py-10;
+  }
+  .dw-auth-wrap {
+    @apply relative w-full max-w-sm;
+  }
+  .dw-auth-receipt {
+    @apply relative bg-white px-8 py-9 shadow-[0_20px_60px_rgba(0,0,0,0.35)];
+    clip-path: polygon(
+      0% 8px, 4% 0%, 8% 8px, 12% 0%, 16% 8px, 20% 0%, 24% 8px, 28% 0%, 32% 8px, 36% 0%,
+      40% 8px, 44% 0%, 48% 8px, 52% 0%, 56% 8px, 60% 0%, 64% 8px, 68% 0%, 72% 8px, 76% 0%,
+      80% 8px, 84% 0%, 88% 8px, 92% 0%, 96% 8px, 100% 0%,
+      100% 100%, 96% calc(100% - 8px), 92% 100%, 88% calc(100% - 8px), 84% 100%, 80% calc(100% - 8px),
+      76% 100%, 72% calc(100% - 8px), 68% 100%, 64% calc(100% - 8px), 60% 100%, 56% calc(100% - 8px),
+      52% 100%, 48% calc(100% - 8px), 44% 100%, 40% calc(100% - 8px), 36% 100%, 32% calc(100% - 8px),
+      28% 100%, 24% calc(100% - 8px), 20% 100%, 16% calc(100% - 8px), 12% 100%, 8% calc(100% - 8px),
+      4% 100%, 0% calc(100% - 8px)
+    );
+  }
+  .dw-auth-brand {
+    @apply mb-6 text-center;
+  }
+  .dw-auth-brand h1 {
+    @apply mt-3 text-2xl font-semibold text-tinta;
+  }
+  .dw-auth-brand p {
+    @apply mt-1 text-sm text-tinta/50;
+  }
+  .dw-auth-switch {
+    @apply mt-5 text-center text-sm text-tinta/60;
+  }
+  .dw-auth-switch a {
+    @apply font-semibold text-merah-600 no-underline hover:underline;
+  }
+  .dw-receipt-divider {
+    @apply my-5 border-t border-dashed border-tinta/15;
+  }
+  .dw-auth-hint {
+    @apply text-center font-mono text-xs text-tinta/40;
+  }
+
+  /* ---------- Forms ---------- */
+  .dw-form {
+    @apply flex flex-col gap-4;
+  }
+  .dw-field {
+    @apply flex flex-col gap-1.5 text-sm;
+  }
+  .dw-field > span {
+    @apply font-medium text-tinta/70;
+  }
+  .dw-field input, .dw-input, .dw-select, .dw-textarea {
+    @apply w-full rounded-lg border border-tinta/15 bg-white px-3.5 py-2.5 text-sm text-tinta outline-none transition placeholder:text-tinta/30 focus:border-merah-500 focus:ring-2 focus:ring-merah-100;
+  }
+  .dw-btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold no-underline transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .dw-btn-primary {
+    @apply bg-merah-500 text-white hover:bg-merah-600;
+  }
+  .dw-btn-light {
+    @apply mt-5 bg-white text-merah-600 hover:bg-kertas-off;
+  }
+  .dw-btn-outline {
+    @apply border border-tinta/15 bg-white text-tinta hover:border-merah-500 hover:text-merah-600;
+  }
+  .dw-btn-block {
+    @apply w-full;
+  }
+
+  /* ---------- Alerts ---------- */
+  .dw-alert {
+    @apply mb-4 rounded-lg border px-4 py-3 text-sm;
+  }
+  .dw-alert-error {
+    @apply border-merah-100 bg-merah-50 text-merah-700;
+  }
+  .dw-alert-success {
+    @apply border-hijau/20 bg-hijau/5 text-hijau;
+  }
+
+  /* ---------- Error card ---------- */
+  .dw-error-card {
+    @apply relative mx-auto flex max-w-sm flex-col items-center gap-2 rounded-2xl bg-white px-10 py-12 text-center shadow-xl;
+  }
+  .dw-error-stamp {
+    @apply mb-2 -rotate-6 rounded border-4 border-merah-500 px-3 py-1 font-mono text-xs font-bold tracking-widest text-merah-500;
+  }
+  .dw-error-card h1 {
+    @apply text-4xl font-bold;
+  }
+  .dw-error-card p {
+    @apply text-sm text-tinta/60;
+  }
+
+  /* ---------- Hero balance note ---------- */
+  .dw-note-hero {
+    @apply relative mb-6 overflow-hidden rounded-2xl bg-merah-500 bg-[linear-gradient(135deg,_#C1121F_0%,_#780000_100%)] px-6 py-7 text-white shadow-lg;
+  }
+  .dw-note-hero::before {
+    content: '';
+    @apply pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border border-white/10;
+  }
+  .dw-note-hero::after {
+    content: '';
+    @apply pointer-events-none absolute -bottom-16 -left-6 h-40 w-40 rounded-full border border-white/10;
+  }
+  .dw-note-hero-row {
+    @apply flex items-start justify-between gap-4;
+  }
+  .dw-note-label {
+    @apply text-xs font-medium uppercase tracking-wide text-white/70;
+  }
+  .dw-note-amount {
+    @apply font-mono text-3xl font-semibold tabular-nums sm:text-4xl;
+  }
+  .dw-note-serial {
+    @apply font-mono text-xs text-white/50;
+  }
+  .dw-note-hero-split {
+    @apply mt-6 flex flex-wrap gap-x-8 gap-y-2 border-t border-white/15 pt-4 text-sm text-white/85;
+  }
+  .dw-note-hero-item {
+    @apply flex items-center gap-2;
+  }
+  .dw-note-hero-item strong {
+    @apply font-mono font-semibold tabular-nums text-white;
+  }
+  .dw-dot {
+    @apply h-2 w-2 rounded-full;
+  }
+  .dw-dot-in { @apply bg-emerald-300; }
+  .dw-dot-out { @apply bg-white/60; }
+
+  /* ---------- Panels / grid ---------- */
+  .dw-grid-2 {
+    @apply grid grid-cols-1 gap-5 lg:grid-cols-2;
+  }
+  .dw-panel {
+    @apply mb-5 rounded-2xl border border-tinta/10 bg-white p-5 shadow-sm;
+  }
+  .dw-panel-form {
+    @apply max-w-xl;
+  }
+  .dw-panel-head {
+    @apply mb-3 flex items-center justify-between gap-3;
+  }
+  .dw-panel-title {
+    @apply mb-3 text-base font-semibold text-tinta;
+  }
+  .dw-link {
+    @apply text-sm font-medium text-merah-600 no-underline hover:underline;
+  }
+  .dw-empty {
+    @apply py-6 text-center text-sm text-tinta/40;
+  }
+  .dw-page-title {
+    @apply mb-1 font-display text-2xl font-semibold text-tinta;
+  }
+  .dw-page-subtitle {
+    @apply mb-5 text-sm text-tinta/50;
+  }
+
+  /* ---------- Ledger list (dashboard recent) ---------- */
+  .dw-ledger-list {
+    @apply flex flex-col divide-y divide-tinta/5;
+  }
+  .dw-ledger-row {
+    @apply flex items-center gap-3 py-3;
+  }
+  .dw-ledger-icon {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-semibold;
+  }
+  .dw-ledger-icon-masuk { @apply bg-hijau/10 text-hijau; }
+  .dw-ledger-icon-keluar { @apply bg-merah-50 text-merah-600; }
+  .dw-ledger-info {
+    @apply flex min-w-0 flex-1 flex-col;
+  }
+  .dw-ledger-desc {
+    @apply truncate text-sm font-medium text-tinta;
+  }
+  .dw-ledger-date {
+    @apply text-xs text-tinta/40;
+  }
+  .dw-ledger-amount {
+    @apply font-mono text-sm font-semibold tabular-nums;
+  }
+  .dw-ledger-amount-masuk { @apply text-hijau; }
+  .dw-ledger-amount-keluar { @apply text-merah-600; }
+
+  /* ---------- Filter bar ---------- */
+  .dw-filter-bar {
+    @apply mb-5 flex flex-wrap gap-2.5;
+  }
+  .dw-filter-bar .dw-select, .dw-filter-bar .dw-input {
+    @apply w-auto flex-1 basis-40;
+  }
+
+  /* ---------- Empty state ---------- */
+  .dw-empty-state {
+    @apply flex flex-col items-center gap-3 py-14 text-center;
+  }
+  .dw-empty-icon {
+    @apply text-4xl;
+  }
+
+  /* ---------- Receipt-style transaction table ---------- */
+  .dw-receipt-table {
+    @apply flex flex-col gap-2.5;
+  }
+  .dw-receipt-row {
+    @apply flex items-center gap-3.5 rounded-xl border border-tinta/10 bg-white p-3 shadow-sm;
+  }
+  .dw-proof-thumb {
+    @apply h-12 w-12 shrink-0 cursor-pointer rounded-lg border border-tinta/10 object-cover transition hover:scale-105;
+  }
+  .dw-receipt-main {
+    @apply flex min-w-0 flex-1 flex-col;
+  }
+  .dw-receipt-desc {
+    @apply truncate text-sm font-medium text-tinta;
+  }
+  .dw-receipt-meta {
+    @apply text-xs text-tinta/40;
+  }
+  .dw-receipt-amount {
+    @apply shrink-0 font-mono text-sm font-semibold tabular-nums;
+  }
+  .dw-receipt-actions {
+    @apply flex shrink-0 items-center gap-1;
+  }
+  .dw-icon-btn {
+    @apply flex h-8 w-8 items-center justify-center rounded-lg border border-transparent text-tinta/50 no-underline transition hover:border-tinta/10 hover:bg-kertas-off hover:text-tinta;
+  }
+  .dw-icon-btn-danger:hover {
+    @apply border-merah-100 bg-merah-50 text-merah-600;
+  }
+
+  /* ---------- Proof photo modal ---------- */
+  .dw-proof-modal {
+    @apply fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-6;
+  }
+  .dw-proof-modal.is-open {
+    @apply flex;
+  }
+  .dw-proof-modal img {
+    @apply max-h-[85vh] max-w-full rounded-xl shadow-2xl;
+  }
+
+  /* ---------- Stat cards (admin) ---------- */
+  .dw-stat-cards {
+    @apply mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4;
+  }
+  .dw-stat-card {
+    @apply rounded-xl border border-tinta/10 bg-white p-4;
+  }
+  .dw-stat-card-in {
+    @apply border-hijau/15 bg-hijau/5;
+  }
+  .dw-stat-card-out {
+    @apply border-merah-100 bg-merah-50;
+  }
+  .dw-stat-label {
+    @apply block text-xs font-medium uppercase tracking-wide text-tinta/40;
+  }
+  .dw-stat-value {
+    @apply mt-1 block font-mono text-xl font-semibold tabular-nums text-tinta;
+  }
+}
